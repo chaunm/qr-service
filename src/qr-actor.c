@@ -35,12 +35,15 @@ static void QrActorPublishQrContent(char* content)
 	if (qrActor == NULL) return;
 	json_t* eventJson = json_object();
 	json_t* paramsJson = json_object();
+	json_t* statusJson = json_string("status.success");
 	json_t* contentJson = json_string(content);
+	json_object_set(paramsJson, "status", statusJson);
 	json_object_set(paramsJson, "content", contentJson);
 	json_object_set(eventJson, "params", paramsJson);
 	char* eventMessage = json_dumps(eventJson, JSON_INDENT(4) | JSON_REAL_PRECISION(4));
 	char* topicName = ActorMakeTopicName(qrActor->guid, "/:event/qr_update");
 	ActorSend(qrActor, topicName, eventMessage, NULL, FALSE);
+	json_decref(statusJson);
 	json_decref(contentJson);
 	json_decref(paramsJson);
 	json_decref(eventJson);
