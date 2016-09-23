@@ -54,7 +54,7 @@ static void QrActorPublishInfo(char* info)
 	json_t* eventJson = json_object();
 	json_t* paramsJson = json_object();
 	json_t* infoJson = json_string(info);
-	json_object_set(paramsJson, "content", infoJson);
+	json_object_set(paramsJson, "info", infoJson);
 	json_object_set(eventJson, "params", paramsJson);
 	char* eventMessage = json_dumps(eventJson, JSON_INDENT(4) | JSON_REAL_PRECISION(4));
 	char* topicName = ActorMakeTopicName(qrActor->guid, "/:event/info");
@@ -152,7 +152,7 @@ int main(int argc, char* argv[])
 			long_options, &long_index )) != -1) {
 		switch (opt) {
 		case 'h' :
-			printf("using: LedActor --<token> --<id> --<host> --port<>\n"
+			printf("using: qr-service --<token> --<id> --<host> --port<>\n"
 					"id: guid of the actor\n"
 					"token: password of the actor\n"
 					"host: mqtt server address, if omitted using local host\n"

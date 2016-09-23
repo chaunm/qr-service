@@ -52,7 +52,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/lib/lib-mosquitto}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/lib/uuid/lib}&quot;"/>
 								</option>
-								<option id="gnu.c.link.option.ldflags.785722520" superClass="gnu.c.link.option.ldflags" value="-Wl,-rpath=${workspace_loc:/${ProjName}/src/lib/lib-ssl}" valueType="string"/>
+								<option id="gnu.c.link.option.ldflags.785722520" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="-Wl,-rpath=${workspace_loc:/${ProjName}/src/lib/lib-ssl}" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.236619293" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
