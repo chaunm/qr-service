@@ -41,8 +41,8 @@ static void QrActorPublishQrContent(char* content)
 	json_object_set(paramsJson, "content", contentJson);
 	json_object_set(eventJson, "params", paramsJson);
 	char* eventMessage = json_dumps(eventJson, JSON_INDENT(4) | JSON_REAL_PRECISION(4));
-	char* topicName = ActorMakeTopicName(qrActor->guid, "/:event/qr_update");
-	ActorSend(qrActor, topicName, eventMessage, NULL, FALSE);
+	char* topicName = ActorMakeTopicName("event/", qrActor->guid, "/qr_update");
+	ActorSend(qrActor, topicName, eventMessage, NULL, FALSE, topicName);
 	json_decref(statusJson);
 	json_decref(contentJson);
 	json_decref(paramsJson);
@@ -60,8 +60,8 @@ static void QrActorPublishInfo(char* info)
 	json_object_set(paramsJson, "info", infoJson);
 	json_object_set(eventJson, "params", paramsJson);
 	char* eventMessage = json_dumps(eventJson, JSON_INDENT(4) | JSON_REAL_PRECISION(4));
-	char* topicName = ActorMakeTopicName(qrActor->guid, "/:event/info");
-	ActorSend(qrActor, topicName, eventMessage, NULL, FALSE);
+	char* topicName = ActorMakeTopicName("event/", qrActor->guid, "/info");
+	ActorSend(qrActor, topicName, eventMessage, NULL, FALSE, topicName);
 	json_decref(infoJson);
 	json_decref(paramsJson);
 	json_decref(eventJson);
